@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>A DHTML Scrolling Window</title>
+<script language="JavaScript">
+var pos=100;
+function Scroll() {
+  if (!document.getElementById("thetext")) return;
+  obj=document.getElementById("thetext");
+  pos -=1;
+  if (pos < 0-obj.offsetHeight+130) return;
+  obj.style.top=pos;  
+  window.setTimeout("Scroll();",30);
+}
+</script>
+</head>
+<body onLoad="Scroll();">
+<h1>Приклад вікна з рухомим текстом</h1>
+<div id="thewindow" style="position:relative;width:180;height:150;
+  overflow:hidden; border-width:2px; border-style:solid; border-color:red">
+<div id="thetext" style="position:absolute;width:170;left:5;top:100">
+<p>Перший параграф</p>
+<p>Тут містяться тільки теги HTML, наприлад, <a href="http://www.starlingtech.com/dhtml/">Посилання</a>.</p>
+<p>Довільний параграф </p>
+<ul><li>Приклад списку</li></ul>
+<p>Текст Завершено </p>
+<p><b>[<a href="javascript:pos=100;Scroll();">Почати знову</a>]</b></p>
+</div>
+</div>
+</body>
+</html>

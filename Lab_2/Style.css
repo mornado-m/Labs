@@ -1,0 +1,18 @@
+img {
+	width: 495px;
+	height: 256px;
+ 	display: inline-block;
+}
+
+#Window {
+	position: relative;
+	width: 1500px;
+	height: 270px;
+	overflow: hidden;
+	text-align: center;
+}
+
+#theImages {
+	position: absolute;
+	top: 10px;
+}

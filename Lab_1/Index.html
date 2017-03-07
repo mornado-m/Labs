@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		function SendForm(x) {			
+			document.getElementsByTagName("Form")[0].setAttribute("method", x);
+		}
+
+	</script>
+</head>
+<body style="background-image: url(bg.jpg);">
+<br><br><br><br><br><br>
+<h1 style="text-align: center; color: #7BCCB5;">Registration</h1>
+<br>
+
+<form name="Form" action="answer.php" method="post" enctype="multipart/form-data" style="text-align: center;">
+
+First Name: <input type="text" name="name1" autofocus required><br><br>
+Last Name: <input type="text" name="name2" required><br><br>
+Birthday: <input type="date" name="birthday" min="1940-01-01" max="2010-12-31"><br><br>
+E-mail: <input type="email" name="E-mail"><br><br>
+Password: <input type="password" name="password" required><br><br>
+Country: 
+<select name="country">
+	<option value="England">England</option>
+	<option value="France">France</option>
+	<option value="Germany">Germany</option>
+	<option value="Russia">Russia</option>
+	<option value="Ukraine">Ukraine</option>
+	<option value="USA">USA</option>
+	<option value="Other">Other</option>
+</select><br><br>
+Sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female <br><br>
+Photo: <input type="file" name="photo" accept=".jpeg"><br><br>
+Method: <input type="radio" name="Method" value="Get" onclick="SendForm('get')">Get <input type="radio" name="Method" value="Post" onclick="SendForm('post')" checked>Post <br><br>
+
+<input type="submit" value="Submit"> <input type="reset" value="Reset">
+                               
+</form>
+
+</body>
+</html>
