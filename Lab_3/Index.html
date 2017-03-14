@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>	
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="Style.css">
+	<script src="jquery.js"></script>
+	<script src="jquery.method.js"></script>
 	<script>
-		function ChangeMethod(x) {			
-			document.getElementsByTagName("Form")[0].setAttribute("method", x);
-		}
+		var growUp = true;
+		$(document).ready(function(){
 
-		function SendForm(){
-			var Check = confirm("Відправити форму?");
+			$("#Image").dblclick(function() {
+  				$(this).hide(); 
+			});
 
-			if (Check) return true;			
-			else {
-				document.Form.Reset.click();
-				return false;
-			}
+			$("#Image").click(function() {
+				var H = parseInt($(this).css("height"));
+				var W = parseInt($(this).css("width"));
+				if(growUp){									
+					$(this).css("height", (5+H) + "px");
+					$(this).css("width", (15+W) + "px");
+					if(H == 210) growUp = false;
+				}		
+				else{
+					$(this).css("height", (H-5) + "px");
+					$(this).css("width", (W-15) + "px");
+					if(H == 200) growUp = true;
+				}		
+			});
 
-		}
+			$(".Reverse").click(function() {
+				$(".SomeText").reverseText();
+			});
+
+			$(".AddData").click(function() {
+				var data = $("#Data").val();				
+				$(".SomeText").append(data);
+				$("#Data").val("");				
+			});
+		});
 	</script>
+	
 </head>
-<body style="background-image: url(Images/bg.jpg);">
-<br><br><br><br><br><br>
-<h1 style="text-align: center; color: #7BCCB5;">Registration</h1>
-<br>
-
-<form name="Form" action="answer.php" method="post" enctype="multipart/form-data" style="text-align: center;">
-
-First Name: <input type="text" name="name1" autofocus required><br><br>
-Last Name: <input type="text" name="name2" required><br><br>
-Birthday: <input type="date" name="birthday" min="1940-01-01" max="2010-12-31"><br><br>
-E-mail: <input type="email" name="E-mail"><br><br>
-Password: <input type="password" name="password" required><br><br>
-Country: 
-<select name="country">
-	<option value="England">England</option>
-	<option value="France">France</option>
-	<option value="Germany">Germany</option>
-	<option value="Russia">Russia</option>
-	<option value="Ukraine">Ukraine</option>
-	<option value="USA">USA</option>
-	<option value="Other">Other</option>
-</select><br><br>
-Sex: <input type="radio" name="sex" value="male" checked>Male <input type="radio" name="sex" value="female">Female <br><br>
-Photo: <input type="file" name="photo" accept=".jpeg"><br><br>
-Method: <input type="radio" name="Method" value="Get" onclick="ChangeMethod('get')">Get <input type="radio" name="Method" value="Post" onclick="ChangeMethod('post')" checked>Post <br><br>
-
-<input type="submit" value="Submit" onclick="SendForm();"> <input type="reset" name="Reset" value="Reset">
-                               
-</form>
-
+<body>
+	<br><br><br>	
+	<img src="Images/Welcome.jpg" id="Image">
+	<br><br><br>
+	<div>
+		<p class="SomeText">
+			Some text.
+		</p>
+	</div>
+	<br>
+	<input type="text" id="Data"><button class="AddData">Add</button>
+	<br><br>
+	<button class="Reverse">Reverse</button>
+	
 </body>
 </html>

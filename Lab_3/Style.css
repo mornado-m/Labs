@@ -1,0 +1,21 @@
+#Image {
+	width: 600px;
+	height: 200px;	
+}
+
+body {
+	text-align: center;
+	background-color: #C0C0C0;
+}
+
+.SomeText {
+	max-width: 600px;
+    display: inline-block;
+    padding: 70px;
+    padding-left: 300px;
+    padding-right: 300px;
+    background-color: #D3D3D3;
+    font-family: "COURIER";
+    font-size: 22px;
+    font-style: bold;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab3</title>
+		<link rel="stylesheet" href="styles.css">
+		<script src="jquery.js"></script>
+		<script src="jquery.reversetext.js"></script>
+		<script>
+			function pageSetup() {
+
+			var form = document.getElementsByClassName("global")[0];
+			var offsetHeight = (window.innerHeight - form.offsetHeight)/2;
+			var offsetWidth = (window.innerWidth - form.offsetWidth)/2;	
+
+			form.style.position = "absolute";
+			if(offsetHeight <= 0) offsetHeight = 0;
+			form.style.top = offsetHeight + "px";
+			form.style.left = offsetWidth + "px";
+		}
+		</script>
+
+		<script>
+		$(document).ready(function(){
+			$.fx.off = false;
+				var font_size = parseInt($(".global").css("font-size"));
+
+			$("button#font-up").click(function() {
+  				if(font_size < 400)
+  					$(".global").css("font-size", (++font_size) + "px");
+  				pageSetup();
+			});
+
+			$("button#font-down").click(function() {
+				if(font_size > 8)
+  					$(".global").css("font-size", (--font_size) + "px");
+  				pageSetup();
+			});
+
+			$("button").mouseenter(function() {
+				$(this).css("background-color", "blue");
+			});
+
+			$("button").mouseleave(function() {
+				$(this).css("background-color", "gainsboro");
+			});
+
+			$("button#reverse").click(function() {
+				$("button").reverseText();
+			});
+			
+			$(".fading-obj").click(function() {
+				$(".fading-obj:first").fadeTo(3000, 0, function(){
+					$(this).hide();				
+					$(".unfading-obj:first").show();
+					$(".unfading-obj:first").fadeTo(0, 0);
+					$(".unfading-obj:first").fadeTo(3000, 1);
+				});
+			})
+
+			$("#line-adder").click(function(){
+				var new_text = $("#new-text-line").val();
+				if(new_text == "")
+					return;
+				$(".global").append(new_text + "<br>");
+				pageSetup();
+			});
+		});
+		</script>
+	</head>
+	<body onload='$(".unfading-obj").hide(); pageSetup();' onresize='pageSetup();'>
+		<div class="global">
+			<button id="font-up">Increase font</button>
+			<button id="font-down">Decrease font</button>
+			<br>
+			<p>
+				Press buttons on this page to see result.
+			</p>
+			<p>
+				Next button reverses text in all buttons on page. to reverse it back press this button again.
+			</p>
+			<button id="reverse">Reverse</button>
+			<br>
+			<br>
+			<div class="fading-obj" style="background-color: blue; color: white; border-color: white; display: inline-block; padding: 10px;">
+				Click me
+			</div>
+			<p class="unfading-obj">
+				That object was faded.
+			</p>
+			<br>
+			<input type="text" size="60" id="new-text-line">
+			<button id='line-adder'>Add line</button>
+			<br>
+		</div>
+	</body>
+</html>
