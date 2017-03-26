@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Style.css">
+	<script src="jquery.js"></script>
+	<script src="jquery.method.js"></script>
+	<script>
+		var growUp = true;
+		$(document).ready(function(){
+
+			$("#Image").dblclick(function() {
+  				$(this).hide(); 
+			});
+
+			$("#Image").click(function() {
+				var H = parseInt($(this).css("height"));
+				var W = parseInt($(this).css("width"));
+				if(growUp){									
+					$(this).css("height", (5+H) + "px");
+					$(this).css("width", (15+W) + "px");
+					if(H == 210) growUp = false;
+				}		
+				else{
+					$(this).css("height", (H-5) + "px");
+					$(this).css("width", (W-15) + "px");
+					if(H == 200) growUp = true;
+				}		
+			});
+
+			$(".Reverse").click(function() {
+				$(".SomeText").reverseText();
+			});
+
+			$(".AddData").click(function() {
+				var data = $("#Data").val();				
+				$(".SomeText").append(data);
+				$("#Data").val("");				
+			});
+		});
+	</script>
+	
+</head>
+<body>
+	<br><br><br>	
+	<img src="Images/Welcome.jpg" id="Image">
+	<br><br><br>
+	<div>
+		<p class="SomeText">
+			Some text.
+		</p>
+	</div>
+	<br>
+	<input type="text" id="Data"><button class="AddData">Add</button>
+	<br><br>
+	<button class="Reverse">Reverse</button>
+	
+</body>
+</html>
