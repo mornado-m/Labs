@@ -2,58 +2,79 @@
 <html>
 <head>	
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="Style.css">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
 	<script src="jquery.js"></script>
-	<script src="jquery.method.js"></script>
 	<script>
-		var growUp = true;
 		$(document).ready(function(){
+			$('#AddBooks').click(function(){				
+ 				$.ajax({
+ 					url: 'answer.php', 
+ 					dataType: "json",
+ 					data: {}, 
+ 					success: function(json){						
+   						var id = 1;
+   						var table = document.getElementById('BookTable');
+   						for (var i = table.rows.length - 1; i >= 1; i--) {
+   							table.deleteRow(i);
+   						}
 
-			$("#Image").dblclick(function() {
-  				$(this).hide(); 
-			});
+   						$.each(json, function(index, element) {
+   							var elem = element.split(';');   							
+   							var row = table.insertRow(id++); 					
+   							for (var i = 0, j = 0; i < elem.length; i++) {
+   								var cell = row.insertCell(j++);	
+   								cell.innerHTML = elem[i];		
+   							}  					
+			            });
+		        	},
+ 				});
+ 	   		})
 
-			$("#Image").click(function() {
-				var H = parseInt($(this).css("height"));
-				var W = parseInt($(this).css("width"));
-				if(growUp){									
-					$(this).css("height", (5+H) + "px");
-					$(this).css("width", (15+W) + "px");
-					if(H == 210) growUp = false;
-				}		
-				else{
-					$(this).css("height", (H-5) + "px");
-					$(this).css("width", (W-15) + "px");
-					if(H == 200) growUp = true;
-				}		
-			});
+			$('#SearchButton').click(function(){
+				var search = $('#SearchLine').val();
+				$.ajax({
+					type: "POST",
+ 					url: 'answer.php', 
+ 					dataType: "json",
+ 					data: { valuetype: 'search', value: search }, 
+ 					success: function(json){						
+ 						if (!json.Check) {
+ 							alert("Your book hasn't been finded.");
+ 						}
+ 						else {
+ 							var dat = json.Data;
+ 							alert("You choose book: " + dat[1] + " (" + dat[2] +
+ 								")\nAuthor: " + dat[0]);
+ 						}
+		        	},
+ 				});
 
-			$(".Reverse").click(function() {
-				$(".SomeText").reverseText();
-			});
+			})
 
-			$(".AddData").click(function() {
-				var data = $("#Data").val();				
-				$(".SomeText").append(data);
-				$("#Data").val("");				
-			});
 		});
 	</script>
 	
 </head>
-<body>
-	<br><br><br>	
-	<img src="Images/Welcome.jpg" id="Image">
+<body>	
 	<br><br><br>
-	<div>
-		<p class="SomeText">
-			Some text.
-		</p>
+	<div class="txt">
+		<h1>Library</h1>
+
+		<input type="text" name="Search" id="SearchLine"> <button id="SearchButton">Find</button><br><br>
+
+		<button id="AddBooks">Get BookList</button><br><br>
+		<pre class="BooksList" id="BooksList">
+		<table class="BookTable" id="BookTable">
+			<tr>
+				<th>Author</th>
+				<th>Name</th>
+				<th>Year</th>
+				<th>Enabled</th>
+			</tr>
+		</table>
+		</pre>
 	</div>
-	<br>
-	<input type="text" id="Data"><button class="AddData">Add</button>
-	<br><br>
-	<button class="Reverse">Reverse</button>
-	
+	<br>		
 </body>
 </html>
