@@ -1,0 +1,74 @@
+body {
+	background-image: url(Images/bg.jpg);
+	text-align: center;
+}
+
+#data {
+	padding-left: 650px;
+	padding-right: 500px;
+	text-align: left;
+}
+
+#inf {
+	padding-top: 15%;		
+}
+
+#inf2 {
+	padding-top: 10%;
+}
+
+#Hello {
+	color: #FFCC66;
+	font-size: 48px;
+}
+
+.UserImg {
+	width: 190px;
+	height: 100px;
+}
+
+.UserData {
+	color: #FFCC66;
+}
+
+#center {
+	margin: 50px auto;
+	float: left;
+	width: 60%;	
+}
+
+.table {
+	margin: auto;
+	width: 70%;
+	font-size: 48px;
+}
+
+#left, #right {
+	margin: 50px auto;
+	float: left;
+	width: 20%;
+}
+
+.col2 {
+	border-left: 3px solid black;
+	border-right: 3px solid black;
+}
+
+.row2 {
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+}
+
+.col1, .col2, .col3  {
+	float: left;
+	width: 33%;
+	height: 50px;
+}
+
+.row1, .row2, .row3 {
+	height: 50px;
+}
+
+#Restart {
+	font-size: 24px;
+}
