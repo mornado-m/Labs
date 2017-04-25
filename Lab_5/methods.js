@@ -128,7 +128,7 @@ $(document).ready(function(){
 	 					
 			}
 		}
-	})
+	});
 
 	$('#Restart').click(function() {
 		$('#Restart').hide();
@@ -138,5 +138,23 @@ $(document).ready(function(){
 			for (var j = 0; j < kids.length; ++j) 
 				kids[j].innerText = "";	
 		}
-	})
+	});
+
+	$('#file').change(function() {
+		var $input = $("#file");
+	    var fd = new FormData;
+	    
+	    fd.append('file', $input.prop('files')[0]);
+
+	    $.ajax({
+	        url: 'LoadData.php',
+	        data: fd,
+	        processData: false,
+	        contentType: false,
+	        type: 'POST',
+	        success: function (json) {
+	        	$('#HashResult').text(json.split("file")[1].split('"')[2]);
+	        }
+	    });
+	});
 });

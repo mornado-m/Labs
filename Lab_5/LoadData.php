@@ -13,6 +13,13 @@
 	$data['e_mail']	= $result['E_mail'];
 	$data['photo']	= $result['Photo'];	
 
+	if (isset($_FILES['file'])) {
+		$file = $_FILES['file']["name"];
+		$file = hash_file("md5", $file);
+		$data['file'] = $file;
+	}	
+
 	mysql_close();
-	echo json_encode($data);
+
+	echo json_encode($data);	
 ?>

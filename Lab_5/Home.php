@@ -37,7 +37,13 @@
 		</div></br>
 		<button id="Restart">Restart</button>
 	</div>
-	<div id="right"></div>
+	<div id="right">
+		<div class="FileData">
+			<p>Choose file:</p>
+			<input type="file" name="file_for_hash" id="file">
+			<p id="HashResult"></p>
+		</div>
+	</div>
 
 </body>
 </html>
