@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+	<script src="jquery.js"></script>
+	<script src="methods.js"></script>
+	
+	<script type="text/javascript">
+	</script>
+
+</head>
+<body>	
+	
+	<div id="left">
+		<h2>List of all tables</h2>
+	</div>
+	<div id="center">
+		<h1 id="table_name"></h1>
+		<div id="table"></div></br>
+		<button id="NewRow">Add new row</button>
+
+		<form name="Form" class="Form" action="add_table.php" method="post" enctype="multipart/form-data">
+			Table Name: <input type="text" name="TableName" autofocus required></br></br>
+			<pre>Field Name&#9&#9Type</pre>
+			<div class="inputTable">				
+				<input type="text" name="header1" required>
+				<select name="TYPE1">
+				 	<option value="INT">INT</option>
+					<option value="DOUBLE">DOUBLE</option>
+					<option value="VARCHAR">VARCHAR</option>
+				</select>
+				</br></br>
+
+				<input type="text" name="header2" required>
+				<select name="TYPE2">
+				 	<option value="INT">INT</option>
+					<option value="DOUBLE">DOUBLE</option>
+					<option value="VARCHAR">VARCHAR</option>
+				</select>
+				</br></br>				
+			</div>
+			<p id="NewField">Add field</p><p id="SubtractField">Subtract field</p>
+			</br>				
+			<input type="submit" value="Add Table"> <input type="reset" name="Reset" value="Reset"></br>
+			<input type="number" id="number" name="count" value="2" hidden>
+		</form>
+		
+		</br></br>
+		<form name="Row_Form" class="Row_Form" action="add_row.php" method="post" enctype="multipart/form-data">
+			<h2>Please, fill the fields</h2>
+			<div id="NewRowData">
+				
+			</div>
+			<input type="submit" value="Add Row"> <input type="reset" name="Reset" value="Reset">
+		</form>
+	</div>	
+
+</body>
+</html>

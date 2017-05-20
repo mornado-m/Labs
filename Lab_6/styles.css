@@ -1,0 +1,57 @@
+body {
+	background-color: #F0F8FF;
+	text-align: center;
+	color: #2F5699;
+}
+
+#center {
+	margin: 50px auto;
+	float: left;
+	width: 73%;	
+	margin-left: 20px;
+}
+
+#left {
+	margin: 50px auto;
+	float: left;
+	width: 22%;
+	height: 1000px;
+	border-right: 2px solid #2F5699;
+}
+
+#table, .table {	
+	width: 100%;
+}
+
+th {
+	border: 2px solid;
+	padding: 10px;
+	font-size: 18px;
+}
+
+td {
+	border: 1px solid;
+	padding: 10px;
+}
+
+.link {
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.link:hover {
+	text-decoration: underline;
+	font-size: 18px;
+}
+
+pre {
+	font-family: 'Times New Roman';
+}
+
+#NewField, #SubtractField {
+	text-decoration: none;
+}
+
+#NewField:hover, #SubtractField:hover {
+	text-decoration: underline;
+}
