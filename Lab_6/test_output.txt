@@ -1,0 +1,6 @@
+some_table_1
+id name last_name old
+1 Nick Sereduk 18
+2 John Snow 25
+3 Andy Howard 49
+4 Zoya Cooker 7

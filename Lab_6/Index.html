@@ -18,7 +18,8 @@
 	<div id="center">
 		<h1 id="table_name"></h1>
 		<div id="table"></div></br>
-		<button id="NewRow">Add new row</button>
+		<button id="NewRow">Add new row</button> <button id="SubtractRow">Subtract Row</button> <button id="Load_in_file">Load in file</button>
+		<input type="file" name="file2" id="file2" hidden>
 
 		<form name="Form" class="Form" action="add_table.php" method="post" enctype="multipart/form-data">
 			Table Name: <input type="text" name="TableName" autofocus required></br></br>
@@ -27,7 +28,6 @@
 				<input type="text" name="header1" required>
 				<select name="TYPE1">
 				 	<option value="INT">INT</option>
-					<option value="DOUBLE">DOUBLE</option>
 					<option value="VARCHAR">VARCHAR</option>
 				</select>
 				</br></br>
@@ -35,7 +35,6 @@
 				<input type="text" name="header2" required>
 				<select name="TYPE2">
 				 	<option value="INT">INT</option>
-					<option value="DOUBLE">DOUBLE</option>
 					<option value="VARCHAR">VARCHAR</option>
 				</select>
 				</br></br>				
@@ -52,8 +51,9 @@
 			<div id="NewRowData">
 				
 			</div>
-			<input type="submit" value="Add Row"> <input type="reset" name="Reset" value="Reset">
-		</form>
+			<input type="submit" name="AddRow" value="Add Row" onmousedown="SetOtherParams();"> <input type="reset" name="Reset" value="Reset">
+			<input type="text" name="Other_Params" id="Other_Params" hidden>
+		</form>		
 	</div>	
 
 </body>
